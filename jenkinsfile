@@ -1,24 +1,40 @@
 pipeline {
-  
-  agent { 
 
-  stages {
+  
+
+  agent any 
+
+
+stages {
+
 
     stage('Checkout Source') {
+
       steps {
+
         git url:'https://https://github.com/krish0337/Nginx-sample-dep.git', branch:'main'
+
       }
+
     }
 
-    stage('Deploy App') {
+
+     stage('Deploy App') {
+
       steps {
+
         script {
+
           kubernetesDeploy(configs: "dockerfile.yml")
+
         }
+
       }
+
     }
+
 
   }
 
-}
+
 }
